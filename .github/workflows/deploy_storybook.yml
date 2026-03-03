@@ -1,5 +1,7 @@
 name: Deploy Storybook to GitHub Pages
 
+run-name: Loupe Design System v0
+
 on:
   push:
     branches: [main]
@@ -9,6 +11,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  deployments: write
 
 concurrency:
   group: "pages"
@@ -23,6 +26,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Remove old deployments
+        uses: strumwolf/delete-deployment-environment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
+
       - name: Checkout code
         uses: actions/checkout@v4
 
