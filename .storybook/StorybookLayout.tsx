@@ -1,21 +1,28 @@
 import React from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, DM_Mono, DM_Serif_Text } from "next/font/google";
 import { ThemeProvider } from "../context/ThemeContext";
 import { AgGridProvider } from "../components/providers/ag-grid-provider";
 import { cn } from "../lib/utils";
 
 import "../styles/globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500"],
+});
+
+const dmSerifText = DM_Serif_Text({
+  variable: "--font-dm-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 // ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️ ⚠️
@@ -39,7 +46,7 @@ export default function StorybookLayout({
       />
       <div
         className={cn(
-          `${geist.variable} ${geistMono.variable} antialiased`,
+          `${dmSans.variable} ${dmMono.variable} ${dmSerifText.variable} antialiased`,
           // additional styles to ensure components appear correctly
           // in dark mode w/o a full app wrapper
           "bg-sidebar p-2 w-full",

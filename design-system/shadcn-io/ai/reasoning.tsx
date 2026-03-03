@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 // Types – minimal type for web search preview (no app/agent-config)
 ///////////////////////////////////////////////////
 
-type WebSearchToolUIPart = ToolUIPart<Record<string, unknown>> & {
+type WebSearchToolUIPart = ToolUIPart & {
   type: "tool-web_search_preview";
 };
 

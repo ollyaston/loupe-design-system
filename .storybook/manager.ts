@@ -1,5 +1,5 @@
-import { addons } from "@storybook/manager-api";
-import { create } from "@storybook/theming";
+import { addons } from "storybook/manager-api";
+import { create } from "storybook/theming";
 
 addons.setConfig({
   theme: create({
@@ -8,6 +8,6 @@ addons.setConfig({
     brandUrl: "/",
     brandImage: "/Loupe_Logo_Wordmark.svg",
     brandTarget: "_self",
-    fontBase: '"DM Serif Text", serif',
+    fontBase: '"DM Sans", sans-serif',
   }),
 });

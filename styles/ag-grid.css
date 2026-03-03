@@ -103,7 +103,7 @@
   height: auto !important;
   min-height: 52px !important;
   font-size: 14px !important;
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
 }
 
 /* Page numbers and text - use foreground color and monospace for numbers */
@@ -116,7 +116,7 @@
 /* Apply monospace font to pagination number values */
 .ag-paging-row-summary-panel-number,
 .ag-paging-number {
-  font-family: var(--font-geist-mono), ui-monospace, monospace !important;
+  font-family: var(--font-mono), ui-monospace, monospace !important;
   font-size: 13px !important;
 }
 
@@ -148,7 +148,7 @@
 
 /* Page size selector - apply monospace font to the number */
 .ag-paging-page-size .ag-picker-field-display {
-  font-family: var(--font-geist-mono), ui-monospace, monospace !important;
+  font-family: var(--font-mono), ui-monospace, monospace !important;
   font-size: 13px !important;
 }
 
@@ -418,7 +418,7 @@
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
   overflow: visible !important;
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
   padding: 8px !important;
   height: fit-content !important;
   min-height: fit-content !important;
@@ -444,7 +444,7 @@
   padding: 8px 12px !important;
   font-size: 14px !important;
   color: var(--foreground) !important;
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
   height: 36px !important;
 }
 
@@ -591,7 +591,7 @@
 .ag-filter .ag-picker-field-display {
   font-size: 14px !important;
   color: var(--foreground) !important;
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
 }
 
 /* Filter select dropdown icon */
@@ -725,7 +725,7 @@
 
 /* Contains text styling - match filter input font */
 .ag-filter .ag-picker-field-display {
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 1.5 !important;
@@ -752,7 +752,7 @@
 .ag-filter .ag-text-field-input {
   padding: 6px 10px !important;
   height: 32px !important;
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 1.5 !important;
@@ -763,7 +763,7 @@
 
 /* Filter input placeholder styling */
 .ag-filter .ag-text-field-input::placeholder {
-  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-family: var(--font-sans), system-ui, sans-serif !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   color: var(--muted-foreground) !important;

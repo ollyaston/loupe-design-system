@@ -88,7 +88,7 @@ export const CurrencyInput = React.forwardRef<
     onChange(parsed);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsUserEditing(false);
     if (displayValue && !displayValue.includes(".")) {
       // Add .00 if no decimal point exists
@@ -103,7 +103,7 @@ export const CurrencyInput = React.forwardRef<
       }
     }
     // Call parent onBlur if provided
-    onBlur?.();
+    onBlur?.(e);
   };
 
   const handleFocus = () => {

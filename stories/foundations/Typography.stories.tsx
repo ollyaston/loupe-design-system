@@ -167,15 +167,19 @@ const sidebarColors = [
 const fontFamilies = [
   {
     class: "font-sans",
-    name: "Geist",
-    description: "Geist, system fonts",
+    name: "DM Sans",
+    description: "DM Sans, body text and UI",
+  },
+  {
+    class: "font-serif",
+    // eslint-disable-next-line agent-loupe-ui/sentence-case -- font name
+    name: "DM Serif Text",
+    description: "DM Serif Text, display and headings",
   },
   {
     class: "font-mono",
-    // eslint-disable-next-line agent-loupe-ui/sentence-case
-    name: "Geist Mono",
-    // eslint-disable-next-line agent-loupe-ui/sentence-case
-    description: "Geist Mono, monospace",
+    name: "DM Mono",
+    description: "DM Mono, code and monospace",
   },
 ];
 

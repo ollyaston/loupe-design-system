@@ -3,6 +3,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import React from "react";
 
+import type { ColumnDef } from "@tanstack/react-table";
 import {
   DataTableWrapper,
   DataTableHeader,
@@ -451,7 +452,7 @@ export const WithExpandingRows: Story = {
       },
     ];
 
-    const columns = [
+    const columns: ColumnDef<any, any>[] = [
       {
         accessorKey: "name",
         header: "Name",
@@ -467,8 +468,8 @@ export const WithExpandingRows: Story = {
       {
         accessorKey: "amount",
         header: "Amount",
-        cell: ({ getValue }: { getValue: () => string }) => (
-          <span className="font-mono">{getValue()}</span>
+        cell: (info) => (
+          <span className="font-mono">{String(info.getValue() ?? "")}</span>
         ),
       },
     ];
@@ -478,9 +479,9 @@ export const WithExpandingRows: Story = {
         columns={columns}
         data={data}
         getRowCanExpand={(row) =>
-          row.original.subRows && row.original.subRows.length > 0
+          !!(row.original.subRows && row.original.subRows.length > 0)
         }
-        getSubRows={(row) => row.subRows}
+        getSubRows={(row) => row.subRows ?? []}
       />
     );
   },
@@ -678,7 +679,7 @@ export const WithNestedRows: Story = {
       },
     ];
 
-    const columns = [
+    const columns: ColumnDef<any, any>[] = [
       {
         accessorKey: "name",
         header: "Name",
@@ -694,8 +695,8 @@ export const WithNestedRows: Story = {
       {
         accessorKey: "amount",
         header: "Amount",
-        cell: ({ getValue }: { getValue: () => string }) => (
-          <span className="font-mono">{getValue()}</span>
+        cell: (info) => (
+          <span className="font-mono">{String(info.getValue() ?? "")}</span>
         ),
       },
     ];
@@ -705,9 +706,9 @@ export const WithNestedRows: Story = {
         columns={columns}
         data={data}
         getRowCanExpand={(row) =>
-          row.original.subRows && row.original.subRows.length > 0
+          !!(row.original.subRows && row.original.subRows.length > 0)
         }
-        getSubRows={(row) => row.subRows}
+        getSubRows={(row) => row.subRows ?? []}
       />
     );
   },
