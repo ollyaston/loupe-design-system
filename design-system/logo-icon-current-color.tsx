@@ -15,7 +15,7 @@ export const IconCurrentColor = ({
     xmlns="http://www.w3.org/2000/svg"
     className="loupe-system"
   >
-    <rect width="224" height="224" rx="24" fill="var(--color-cerulean-600)" />
+    <rect width="224" height="224" rx="24" fill="#344AE3" />
     <path d="M72 152H112V168H56V112H72V152Z" fill="white" />
     <path d="M168 56V112H152V72H112V56H168Z" fill="white" />
   </svg>

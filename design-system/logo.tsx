@@ -16,10 +16,10 @@ export const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
     const hasColorOverride = color !== undefined && color !== "currentColor";
     const colorStyle = hasColorOverride ? { color } : undefined;
 
-    // Full logotype from Loupe_Logo_Wordmark.svg: 738×224 (icon 224 + gap 56 + wordmark 458)
-    const logotypeAspectRatio = 738 / 224;
-    const gapRatio = 56 / 738;
-    const wordmarkRatio = 458 / 738;
+    // Full logotype from Loupe_Logo_Wordmark.svg: 723×224 (icon 224 + gap 56 + wordmark 443)
+    const logotypeAspectRatio = 723 / 224;
+    const gapRatio = 56 / 723;
+    const wordmarkRatio = 443 / 723;
 
     const isIcon = variant === "icon";
     const isLogotypeOnly = variant === "logotype-only";
@@ -38,7 +38,7 @@ export const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
     }
 
     if (isLogotypeOnly) {
-      const height = size / (458 / 224); // wordmark aspect 458×224
+      const height = size / (443 / 224); // wordmark aspect 443×224
       return (
         <div
           ref={ref}
