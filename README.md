@@ -2,6 +2,18 @@
 
 A [Next.js](https://nextjs.org) design system with Storybook for developing components in isolation.
 
+## Install
+
+```bash
+npm install github:ollyaston/loupe-design-system
+```
+
+Or add to your `package.json`:
+
+```json
+"@ollyaston/loupe-design-system": "github:ollyaston/loupe-design-system"
+```
+
 ## Getting started
 
 Install the [Prettier extension for VSCode/Cursor](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) so files are formatted automatically on save.

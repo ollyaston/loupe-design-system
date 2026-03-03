@@ -1,7 +1,20 @@
 {
-  "name": "loupe-design-system",
+  "name": "@ollyaston/loupe-design-system",
   "version": "0.1.0",
-  "private": true,
+  "description": "Loupe Design System – React components built on shadcn/ui and Radix UI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ollyaston/loupe-design-system.git"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "ui",
+    "tailwind",
+    "radix-ui"
+  ],
+  "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev --turbopack",
