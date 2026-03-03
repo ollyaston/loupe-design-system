@@ -33,7 +33,13 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
+
+      - name: Install native binaries (workaround for npm/cli#4828)
+        run: |
+          npm install @rollup/rollup-linux-x64-gnu
+          rm -rf node_modules/lightningcss node_modules/.cache
+          npm install lightningcss-linux-x64-gnu lightningcss
 
       - name: Build Storybook
         run: NODE_OPTIONS="--max-old-space-size=12288" npm run build-storybook
