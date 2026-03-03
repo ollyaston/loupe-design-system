@@ -1,0 +1,89 @@
+# Loading
+
+Loading state components that provide feedback during asynchronous operations. These components help users understand when the system is processing their requests.
+
+## What are Loading Components?
+
+Loading components provide visual feedback during data fetching, processing, and other asynchronous operations. They offer:
+
+- **User feedback** - Clear indication that something is happening
+- **Reduced anxiety** - Users know the system is working
+- **Better UX** - Prevents confusion about system state
+- **Accessibility** - Screen reader announcements for loading states
+
+## Component Categories
+
+### Loading Indicators
+
+- **Spinner** - Animated loading indicator
+- **Skeleton** - Placeholder content while loading
+- **LoadingPage** - Full-page loading state
+
+## Usage Guidelines
+
+### When to use Loading Components
+
+- During data fetching operations
+- When processing user actions
+- For file uploads and downloads
+- During form submissions
+- When navigating between pages
+
+### Best Practices
+
+- Show loading states for operations longer than 200ms
+- Use appropriate loading indicators for different contexts
+- Provide clear messaging about what's happening
+- Ensure loading states are accessible
+- Test with slow network connections
+
+## Spinner Components
+
+Basic animated loading indicators with multiple sizes and customizable styling for different contexts and use cases.
+
+## Skeleton Loading
+
+Placeholder content that matches the expected layout provides better user experience than blank screens during loading.
+
+## Loading Page
+
+Full-page loading states for route transitions with customizable messages and progress indicators.
+
+## Button Loading States
+
+Loading states for interactive elements provide clear feedback when actions are being processed.
+
+## Form Loading States
+
+Loading feedback for form submissions prevents multiple submissions and provides clear user feedback.
+
+## Data Table Loading
+
+Loading states for data tables include skeleton rows and progress indicators for large datasets.
+
+## Progressive Loading
+
+Show partial content while loading more data to improve perceived performance and user experience.
+
+## Accessibility Features
+
+- **Screen reader support** - Loading states are announced
+- **Reduced motion** - Respects user preferences
+- **Focus management** - Maintains focus during loading
+- **ARIA labels** - Clear descriptions of loading states
+
+## Performance Considerations
+
+- **Minimal animations** - Lightweight CSS animations
+- **Efficient rendering** - Only render when needed
+- **Memory management** - Clean up timers and intervals
+- **Bundle size** - Optimized for minimal impact
+
+## Custom Loading States
+
+Create custom loading components for specific use cases with branded animations and messaging.
+
+## Related Resources
+
+- [Design Tokens](?path=/story/tokens-colors--color-tokens)
+- [Figma Components](https://www.figma.com/design/W3Kp5J4xG5BZl4GFJrKESG/Loupe---Design-System)

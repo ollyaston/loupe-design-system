@@ -1,0 +1,290 @@
+/*
+  ⚠️ CAREFUL EDITING THIS FILE ⚠️
+
+  - Read the information on each color "layer" below
+  - Keep the different color layers separate
+  - Keep a 1:1 mapping between color layers - if you add/remove one, do it to the other layers
+  - Do not use raw color values here, use variables from color-ramps.css
+  - Note any variables beyond the ones defined in https://ui.shadcn.com/docs/theming
+*/
+
+/*
+  UTILITY LAYER
+
+  The purpose of this layer is to define --color-prefixed variables that Tailwind will
+  parse and use in utility classes.
+
+  For example, --color-background will be available as the utility class "bg-background"
+*/
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-alt: var(--destructive-alt);
+  --color-destructive-alt-foreground: var(--destructive-alt-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-alt: var(--warning-alt);
+  --color-warning-alt-foreground: var(--warning-alt-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  THEME LAYER
+
+  These colors map the Figma colors to semantic values based on a class
+  on the body element that is set depending on light or dark mode being enabled
+*/
+
+@layer base {
+  :root,
+  .light {
+    --background: var(--color-background-light);
+    --foreground: var(--color-foreground-light);
+    --card: var(--color-card-light);
+    --card-foreground: var(--color-card-foreground-light);
+    --popover: var(--color-popover-light);
+    --popover-foreground: var(--color-popover-foreground-light);
+    --primary: var(--color-primary-light);
+    --primary-foreground: var(--color-primary-foreground-light);
+    --secondary: var(--color-secondary-light);
+    --secondary-foreground: var(--color-secondary-foreground-light);
+    --muted: var(--color-muted-light);
+    --muted-foreground: var(--color-muted-foreground-light);
+    --accent: var(--color-accent-light);
+    --accent-foreground: var(--color-accent-foreground-light);
+    --destructive: var(--color-destructive-light);
+    --destructive-foreground: var(--color-destructive-foreground-light);
+    --destructive-alt: var(--color-destructive-alt-light);
+    --destructive-alt-foreground: var(--color-destructive-alt-foreground-light);
+    --info: var(--color-info-light);
+    --info-foreground: var(--color-info-foreground-light);
+    --success: var(--color-success-light);
+    --success-foreground: var(--color-success-foreground-light);
+    --warning: var(--color-warning-light);
+    --warning-foreground: var(--color-warning-foreground-light);
+    --warning-alt: var(--color-warning-alt-light);
+    --warning-alt-foreground: var(--color-warning-alt-foreground-light);
+    --border: var(--color-border-light);
+    --input: var(--color-input-light);
+    --ring: var(--color-ring-light);
+    --chart-1: var(--color-chart-1-light);
+    --chart-2: var(--color-chart-2-light);
+    --chart-3: var(--color-chart-3-light);
+    --chart-4: var(--color-chart-4-light);
+    --chart-5: var(--color-chart-5-light);
+
+    /* High contrast sidebar (default) */
+    --sidebar: var(--color-sidebar-background-dark);
+    --sidebar-foreground: var(--color-sidebar-foreground-dark);
+    --sidebar-primary: var(--color-sidebar-primary-dark);
+    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground-dark);
+    --sidebar-accent: var(--color-sidebar-accent-dark);
+    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground-dark);
+    --sidebar-border: var(--color-sidebar-border-dark);
+    --sidebar-ring: var(--color-sidebar-ring-dark);
+  }
+
+  /* Light theme with low contrast: use light sidebar colors */
+  .light.contrast-low {
+    --sidebar: var(--color-sidebar-background-light);
+    --sidebar-foreground: var(--color-sidebar-foreground-light);
+    --sidebar-primary: var(--color-sidebar-primary-light);
+    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground-light);
+    --sidebar-accent: var(--color-sidebar-accent-light);
+    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground-light);
+    --sidebar-border: var(--color-sidebar-border-light);
+    --sidebar-ring: var(--color-sidebar-ring-light);
+  }
+
+  .dark {
+    --background: var(--color-background-dark);
+    --foreground: var(--color-foreground-dark);
+    --card: var(--color-card-dark);
+    --card-foreground: var(--color-card-foreground-dark);
+    --popover: var(--color-popover-dark);
+    --popover-foreground: var(--color-popover-foreground-dark);
+    --primary: var(--color-primary-dark);
+    --primary-foreground: var(--color-primary-foreground-dark);
+    --secondary: var(--color-secondary-dark);
+    --secondary-foreground: var(--color-secondary-foreground-dark);
+    --muted: var(--color-muted-dark);
+    --muted-foreground: var(--color-muted-foreground-dark);
+    --accent: var(--color-accent-dark);
+    --accent-foreground: var(--color-accent-foreground-dark);
+    --destructive: var(--color-destructive-dark);
+    --destructive-foreground: var(--color-destructive-foreground-dark);
+    --destructive-alt: var(--color-destructive-alt-dark);
+    --destructive-alt-foreground: var(--color-destructive-alt-foreground-dark);
+    --info: var(--color-info-dark);
+    --info-foreground: var(--color-info-foreground-dark);
+    --success: var(--color-success-dark);
+    --success-foreground: var(--color-success-foreground-dark);
+    --warning: var(--color-warning-dark);
+    --warning-foreground: var(--color-warning-foreground-dark);
+    --warning-alt: var(--color-warning-alt-dark);
+    --warning-alt-foreground: var(--color-warning-alt-foreground-dark);
+    --border: var(--color-border-dark);
+    --input: var(--color-input-dark);
+    --ring: var(--color-ring-dark);
+    --chart-1: var(--color-chart-1-dark);
+    --chart-2: var(--color-chart-2-dark);
+    --chart-3: var(--color-chart-3-dark);
+    --chart-4: var(--color-chart-4-dark);
+    --chart-5: var(--color-chart-5-dark);
+
+    /* Low contrast sidebar */
+    --sidebar: var(--color-sidebar-background-dark);
+    --sidebar-foreground: var(--color-sidebar-foreground-dark);
+    --sidebar-primary: var(--color-sidebar-primary-dark);
+    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground-dark);
+    --sidebar-accent: var(--color-sidebar-accent-dark);
+    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground-dark);
+    --sidebar-border: var(--color-sidebar-border-dark);
+    --sidebar-ring: var(--color-sidebar-ring-dark);
+  }
+
+  /* High contrast sidebar */
+  .dark.contrast-high {
+    --sidebar: var(--color-sidebar-background-light);
+    --sidebar-foreground: var(--color-sidebar-foreground-light);
+    --sidebar-primary: var(--color-sidebar-primary-light);
+    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground-light);
+    --sidebar-accent: var(--color-sidebar-accent-light);
+    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground-light);
+    --sidebar-border: var(--color-sidebar-border-light);
+    --sidebar-ring: var(--color-sidebar-ring-light);
+  }
+
+  /*
+    FIGMA LAYER
+
+    These are copied directly from the Loupe Design System in Figma
+    They have separate variables for light and dark because of how Figma handles colors
+  */
+
+  :root {
+    --color-accent-light: var(--color-pigeon-100);
+    --color-accent-dark: var(--color-pigeon-700);
+    --color-accent-foreground-light: var(--color-pigeon-900);
+    --color-accent-foreground-dark: var(--color-pigeon-50);
+    --color-background-light: var(--color-base-white);
+    --color-background-dark: var(--color-pigeon-950);
+    --color-border-light: var(--color-pigeon-200);
+    /* TODO - use a real ramp color in Figma? */
+    --color-border-dark: #ffffff1a;
+    --color-card-light: var(--color-base-white);
+    --color-card-dark: var(--color-pigeon-900);
+    --color-card-foreground-light: var(--color-pigeon-950);
+    --color-card-foreground-dark: var(--color-pigeon-50);
+    --color-destructive-light: var(--color-coral-600);
+    --color-destructive-dark: var(--color-coral-400);
+    --color-destructive-foreground-light: var(--color-coral-50);
+    --color-destructive-foreground-dark: var(--color-coral-50);
+    --color-destructive-alt-light: var(--color-coral-50);
+    --color-destructive-alt-dark: var(--color-coral-900);
+    --color-destructive-alt-foreground-light: var(--color-coral-700);
+    --color-destructive-alt-foreground-dark: var(--color-coral-200);
+    --color-success-light: var(--color-jade-600);
+    --color-success-dark: var(--color-jade-400);
+    --color-success-foreground-light: var(--color-jade-50);
+    --color-success-foreground-dark: var(--color-jade-50);
+    --color-warning-light: var(--color-yolk-600);
+    --color-warning-dark: var(--color-yolk-400);
+    --color-warning-foreground-light: var(--color-yolk-50);
+    --color-warning-foreground-dark: var(--color-yolk-50);
+    --color-warning-alt-light: var(--color-yolk-50);
+    --color-warning-alt-dark: var(--color-yolk-900);
+    --color-warning-alt-foreground-light: var(--color-yolk-700);
+    --color-warning-alt-foreground-dark: var(--color-yolk-200);
+    --color-info-light: var(--color-pacific-600);
+    --color-info-dark: var(--color-pacific-400);
+    --color-info-foreground-light: var(--color-pacific-50);
+    --color-info-foreground-dark: var(--color-pacific-50);
+    --color-foreground-light: var(--color-pigeon-950);
+    --color-foreground-dark: var(--color-pigeon-50);
+    --color-input-light: var(--color-pigeon-200);
+    /* TODO - use a real ramp color in Figma? */
+    --color-input-dark: #ffffff26;
+    --color-muted-light: var(--color-pigeon-100);
+    --color-muted-dark: var(--color-pigeon-800);
+    --color-muted-foreground-light: var(--color-pigeon-500);
+    --color-muted-foreground-dark: var(--color-pigeon-400);
+    --color-popover-light: var(--color-base-white);
+    --color-popover-dark: var(--color-pigeon-800);
+    --color-popover-foreground-light: var(--color-pigeon-950);
+    --color-popover-foreground-dark: var(--color-pigeon-50);
+    --color-primary-light: var(--color-pigeon-900);
+    --color-primary-dark: var(--color-pigeon-200);
+    --color-primary-foreground-light: var(--color-pigeon-50);
+    --color-primary-foreground-dark: var(--color-pigeon-900);
+    --color-ring-light: var(--color-pigeon-400);
+    --color-ring-dark: var(--color-pigeon-500);
+    --color-secondary-light: var(--color-pigeon-100);
+    --color-secondary-dark: var(--color-pigeon-800);
+    --color-secondary-foreground-light: var(--color-pigeon-900);
+    --color-secondary-foreground-dark: var(--color-pigeon-50);
+
+    /* Chart colors using design system color ramps */
+    --color-chart-1-light: var(--color-yolk-500);
+    --color-chart-1-dark: var(--color-yolk-400);
+    --color-chart-2-light: var(--color-pacific-500);
+    --color-chart-2-dark: var(--color-pacific-400);
+    --color-chart-3-light: var(--color-rosemary-500);
+    --color-chart-3-dark: var(--color-rosemary-400);
+    --color-chart-4-light: var(--color-sapphire-500);
+    --color-chart-4-dark: var(--color-sapphire-400);
+    --color-chart-5-light: var(--color-coral-500);
+    --color-chart-5-dark: var(--color-coral-400);
+
+    --color-sidebar-background-light: var(--color-pigeon-50);
+    --color-sidebar-background-dark: var(--color-pigeon-900);
+    --color-sidebar-foreground-light: var(--color-pigeon-950);
+    --color-sidebar-foreground-dark: var(--color-pigeon-50);
+    --color-sidebar-primary-light: var(--color-pigeon-900);
+    --color-sidebar-primary-dark: var(--color-pigeon-700);
+    --color-sidebar-primary-foreground-light: var(--color-pigeon-50);
+    --color-sidebar-primary-foreground-dark: var(--color-pigeon-50);
+    --color-sidebar-accent-light: var(--color-pigeon-100);
+    --color-sidebar-accent-dark: var(--color-pigeon-800);
+    --color-sidebar-accent-foreground-light: var(--color-pigeon-900);
+    --color-sidebar-accent-foreground-dark: var(--color-pigeon-50);
+    --color-sidebar-border-light: var(--color-pigeon-200);
+    /* TODO - use a real ramp color in Figma? */
+    --color-sidebar-border-dark: #ffffff1a;
+    --color-sidebar-ring-light: var(--color-pigeon-400);
+    --color-sidebar-ring-dark: var(--color-pigeon-600);
+  }
+}

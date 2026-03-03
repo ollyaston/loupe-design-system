@@ -1,0 +1,74 @@
+{
+  "comment": "Disclaimer: This is AI-generated code review feedback.",
+  "commentTypes": ["logic", "syntax", "style"],
+  "instructions": "CRITICAL: Always use components from the Loupe design system in design-system/. NEVER create one-off primitive UI components. Before creating any UI element, check design-system/ directory and stories/Welcome.mdx for available components. All design system components must include the 'loupe-system' CSS class at the root. Design system components must not use app state (useOrganization, usePathname, useRouter, useSearchParams, useParams, etc.) or make network calls. See AGENTS.md and stories/Welcome.mdx for complete design system guidelines.",
+  "strictness": 2,
+  "fixWithAI": true,
+  "triggerOnUpdates": true,
+  "statusCheck": true,
+  "ignorePatterns": "*.md\n*.json\n*.config.*\nnode_modules/**\n.next/**\nstorybook-static/**\nplaywright-report/**\ntest-results/**\n*.test.*\n*.spec.*\nstories/**\ndesign-system/**",
+  "ignoreKeywords": "greptile-ignore\ngreptile-ignor",
+  "customContext": {
+    "rules": [
+      {
+        "scope": [
+          "app/**/*.tsx",
+          "app/**/*.ts",
+          "components/**/*.tsx",
+          "components/**/*.ts"
+        ],
+        "rule": "ALWAYS use components from @/design-system/ design system. Import pattern: import { ComponentName } from '@/design-system/component-name'. NEVER create inline JSX for common UI patterns (buttons, inputs, cards, dialogs, etc.). Check stories/Welcome.mdx for available components before creating new UI elements."
+      },
+      {
+        "scope": ["design-system/**/*.tsx"],
+        "rule": "Design system components MUST include 'loupe-system' CSS class at the root element. Components must NOT use app state hooks (useOrganization, usePathname, useRouter, useSearchParams, useParams), make network calls, access browser storage, or use feature flags. Components should be pure and reusable."
+      },
+      {
+        "scope": ["app/**/*.tsx", "components/**/*.tsx"],
+        "rule": "If a UI component doesn't exist in design-system/, create it there following shadcn/ui patterns. Use Tailwind CSS with design tokens from styles/globals.css. Use Radix UI for accessibility. Use class-variance-authority (CVA) for variants. Always create a Storybook story in stories/ directory."
+      }
+    ],
+    "files": [
+      {
+        "scope": ["app/**/*.tsx", "app/**/*.ts", "components/**/*.tsx"],
+        "path": "AGENTS.md",
+        "description": "Design system guidelines and architecture overview. Section 'Design System Guidelines' contains mandatory rules for using components from design-system/."
+      },
+      {
+        "scope": ["app/**/*.tsx", "app/**/*.ts", "components/**/*.tsx"],
+        "path": "stories/Welcome.mdx",
+        "description": "Complete catalog of available design system components organized by category (Primitives, Forms, Charts, Tables, Layouts, etc.). Reference this before creating any new UI component."
+      }
+    ],
+    "other": [
+      {
+        "scope": ["app/**/*.tsx", "components/**/*.tsx"],
+        "content": "This codebase uses the Paid Loupe design system. Components are based on shadcn/ui with custom modifications. All UI components should be imported from @/design-system/ using the pattern: import { ComponentName } from '@/design-system/component-name'. Available component categories include: Primitives (Button, Input, Card, Dialog, etc.), Forms (Checkbox, Select, Switch, etc.), Charts, Tables, Layouts, Modals & Popups, and more. See stories/Welcome.mdx for the complete list."
+      },
+      {
+        "scope": ["design-system/**/*.tsx"],
+        "content": "When creating new design system components: 1) Use kebab-case for file names, PascalCase for component names, 2) Include 'loupe-system' class at root, 3) Use CVA for variants, 4) Use Tailwind CSS with variables from styles/globals.css, 5) Use Radix UI for accessibility, 6) Create Storybook story in stories/ directory, 7) Follow patterns from existing components like button.tsx."
+      }
+    ]
+  },
+  "summarySection": {
+    "included": true,
+    "collapsible": true,
+    "defaultOpen": true
+  },
+  "issuesTableSection": {
+    "included": true,
+    "collapsible": true,
+    "defaultOpen": true
+  },
+  "confidenceScoreSection": {
+    "included": true,
+    "collapsible": false,
+    "defaultOpen": false
+  },
+  "sequenceDiagramSection": {
+    "included": false,
+    "collapsible": false,
+    "defaultOpen": false
+  }
+}

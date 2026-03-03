@@ -1,0 +1,59 @@
+# Text
+
+Text formatting and utility components for displaying formatted content and numbers.
+
+## What are Text Components?
+
+Text components provide utilities for formatting and displaying text content. They include:
+
+- **Markdown rendering** - Display formatted markdown content with citations
+- **Number formatting** - Format numbers with human-readable suffixes
+- **Consistent typography** - Standardized text styling across the application
+
+## Component Categories
+
+### Content Display
+
+- **Markdown** - Markdown renderer component that displays formatted markdown content with support for citations, links, and two size variants (default and compact)
+
+### Utilities
+
+- **FormatNumber** - Utility functions for formatting numbers with human-readable suffixes (k, M, B, T) and extracting numeric values from formatted strings
+
+## Usage Guidelines
+
+### When to use Text Components
+
+- For displaying formatted content from markdown sources
+- When you need to format large numbers in a readable way
+- For research articles and content with citations
+- When displaying user-generated or formatted content
+
+### Best Practices
+
+- Use Markdown for content that needs formatting (headings, lists, links)
+- Use FormatNumber for displaying large numeric values
+- Use compact size for Markdown when space is limited
+- Provide citation links when displaying research content
+- Test with various content lengths and formats
+
+## Markdown Variants
+
+### Default
+
+Standard markdown rendering for research articles and long-form content.
+
+### Compact
+
+Smaller text sizes for compact displays and limited space.
+
+## FormatNumber Options
+
+- **preserveNonNumeric** - Whether to preserve the original value if it's not a valid number (default: true)
+- **decimals** - Number of decimal places to show (default: 1)
+- **showDecimalsForWhole** - Whether to show decimal places for whole numbers (default: false)
+
+## Related Resources
+
+- [Typography](/docs/foundations-typography--docs)
+- [Design Tokens](?path=/story/tokens-colors--color-tokens)

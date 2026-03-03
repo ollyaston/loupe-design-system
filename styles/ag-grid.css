@@ -1,0 +1,812 @@
+/* AG Grid Global Styling - Design System Integration */
+
+/* NOTE: This file should only contain styles for AG Grid's built-in classes.
+   Component-specific styling should be handled in the component using Tailwind classes. */
+
+/* Override AG Grid's CSS custom properties with design system colors */
+.ag-root {
+  /* Cell colors - using design system variables */
+  --ag-background-color: var(--background);
+  --ag-foreground-color: var(--foreground);
+  --ag-border-color: transparent;
+  --ag-header-background-color: transparent;
+  --ag-header-foreground-color: var(--muted-foreground);
+  --ag-row-hover-color: color-mix(in srgb, var(--muted) 50%, transparent);
+  --ag-selected-row-background-color: var(--muted);
+  --ag-odd-row-background-color: transparent;
+
+  /* Row height - 56px for single line items, 48px header */
+  --ag-row-height: 56px;
+  --ag-header-height: 48px;
+
+  /* Remove outer borders but keep row borders */
+  --ag-borders: none;
+  --ag-border-radius: 0;
+  --ag-wrapper-border-radius: 0;
+  --ag-row-border-color: var(--border);
+  --ag-row-border-width: 1px;
+  --ag-row-border-style: solid;
+  --ag-borders-row: solid 1px;
+
+  /* Cell padding - match design system (p-2 = 8px, but we use 12px for better spacing) */
+  --ag-cell-horizontal-padding: 8px;
+
+  /* Font - inherit from document, let cell renderers control via Tailwind */
+  --ag-font-size: 14px;
+
+  /* Header separator - hide it */
+  --ag-header-column-resize-handle-width: 0;
+  --ag-header-column-resize-handle-height: 0;
+  --ag-header-column-resize-handle-color: transparent;
+}
+
+/* Remove outer wrapper border and any border radius */
+.ag-root-wrapper {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove all border radius from AG Grid elements */
+.ag-root-wrapper,
+.ag-root,
+.ag-body-viewport,
+.ag-body,
+.ag-center-cols-viewport,
+.ag-center-cols-container {
+  border-radius: 0 !important;
+}
+
+/* Header styling to match design system - border below header */
+.ag-header {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* Header cell text styling - matches TableHead: text-muted-foreground font-medium */
+.ag-header-cell {
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  color: var(--muted-foreground) !important;
+}
+
+.ag-header-cell-text {
+  color: var(--muted-foreground) !important;
+}
+
+/* Row styling - horizontal separator lines between rows (matches TableRow: border-b) */
+.ag-row {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  cursor: pointer;
+}
+
+/* Cell styling */
+.ag-cell {
+  display: flex !important;
+  align-items: center !important;
+  border: none !important;
+}
+
+/* Remove focus outline/border on cells */
+.ag-cell-focus,
+.ag-cell:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Pagination styling - match design system Pagination component */
+.ag-paging-panel {
+  border-top: 1px solid var(--border) !important;
+  background: transparent !important;
+  padding: 12px 0 !important;
+  height: auto !important;
+  min-height: 52px !important;
+  font-size: 14px !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+}
+
+/* Page numbers and text - use foreground color and monospace for numbers */
+.ag-paging-panel,
+.ag-paging-row-summary-panel,
+.ag-paging-page-summary-panel {
+  color: var(--foreground) !important;
+}
+
+/* Apply monospace font to pagination number values */
+.ag-paging-row-summary-panel-number,
+.ag-paging-number {
+  font-family: var(--font-geist-mono), ui-monospace, monospace !important;
+  font-size: 13px !important;
+}
+
+/* Pagination buttons (Previous/Next arrows) */
+.ag-paging-button {
+  color: var(--foreground) !important;
+  border-radius: 8px !important;
+  padding: 4px 8px !important;
+}
+
+.ag-paging-button:hover:not(.ag-disabled) {
+  background: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+.ag-paging-button.ag-disabled {
+  opacity: 0.5 !important;
+  color: var(--foreground) !important;
+}
+
+/* Page size selector */
+.ag-paging-page-size .ag-picker-field-wrapper {
+  background: var(--background) !important;
+  border: 1px solid var(--input) !important;
+  border-radius: 8px !important;
+  color: var(--foreground) !important;
+  gap: 4px !important;
+}
+
+/* Page size selector - apply monospace font to the number */
+.ag-paging-page-size .ag-picker-field-display {
+  font-family: var(--font-geist-mono), ui-monospace, monospace !important;
+  font-size: 13px !important;
+}
+
+/* Page size dropdown icon - use Material Symbols, closer to number (12px gap) */
+.ag-paging-page-size .ag-picker-field-icon {
+  margin-left: -4px !important;
+}
+
+.ag-paging-page-size .ag-picker-field-icon .ag-icon {
+  font-family: "Material Symbols Rounded" !important;
+  font-size: 18px !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.ag-paging-page-size .ag-icon-small-down::before {
+  content: "expand_more" !important;
+}
+
+/* Description text between controls */
+.ag-paging-description {
+  color: var(--foreground) !important;
+}
+
+/* Remove body viewport border */
+.ag-body-viewport {
+  border: none !important;
+}
+
+/* Remove horizontal scroll border */
+.ag-body-horizontal-scroll {
+  border: none !important;
+}
+
+/* Auto height mode - remove the default 150px min-height */
+.ag-center-cols-viewport {
+  min-height: unset !important;
+}
+
+/* ============================================================================
+   FILTER STYLING - Show on hover only
+   ============================================================================ */
+
+/* Hide filter icon by default */
+.ag-header-cell .ag-header-cell-menu-button,
+.ag-header-cell .ag-header-cell-filter-button {
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Show filter icon on header cell hover */
+.ag-header-cell:hover .ag-header-cell-menu-button,
+.ag-header-cell:hover .ag-header-cell-filter-button {
+  opacity: 1;
+}
+
+/* Always show filter icon when filter is active */
+.ag-header-cell-filtered .ag-header-cell-menu-button,
+.ag-header-cell-filtered .ag-header-cell-filter-button {
+  opacity: 1;
+}
+
+/* Filter icon styling */
+.ag-icon-filter {
+  color: var(--muted-foreground) !important;
+}
+
+.ag-header-cell:hover .ag-icon-filter {
+  color: var(--foreground) !important;
+}
+
+/* ============================================================================
+   TOOLTIP STYLING - For truncated content
+   ============================================================================ */
+
+.ag-tooltip {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+/* ============================================================================
+   COLUMN RESIZE - Visible on hover
+   ============================================================================ */
+
+.ag-header-cell:hover .ag-header-cell-resize {
+  opacity: 1;
+}
+
+.ag-header-cell-resize {
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  width: 4px !important;
+  background-color: var(--border);
+}
+
+.ag-header-cell-resize:hover {
+  background-color: var(--primary) !important;
+}
+
+/* ============================================================================
+   PAGINATION ICONS - Use Material Symbols
+   ============================================================================ */
+
+/* Override AG Grid pagination icons with Material Symbols */
+.ag-paging-button .ag-icon {
+  font-family: "Material Symbols Rounded" !important;
+  font-size: 20px !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Hide the default icon content and replace with Material Symbols */
+.ag-icon-first::before {
+  content: "first_page" !important;
+}
+
+.ag-icon-previous::before {
+  content: "chevron_left" !important;
+}
+
+.ag-icon-next::before {
+  content: "chevron_right" !important;
+}
+
+.ag-icon-last::before {
+  content: "last_page" !important;
+}
+
+/* Filter icon - use filter_alt */
+.ag-icon-filter::before {
+  content: "filter_alt" !important;
+}
+
+.ag-icon-menu::before {
+  content: "more_vert" !important;
+}
+
+/* Sort icons */
+.ag-icon-asc::before {
+  content: "arrow_upward" !important;
+}
+
+.ag-icon-desc::before {
+  content: "arrow_downward" !important;
+}
+
+.ag-icon-none::before {
+  content: "swap_vert" !important;
+}
+
+/* ============================================================================
+   EMPTY STATE STYLING - AG Grid overlay
+   ============================================================================ */
+
+/* Style the no-rows overlay to match design system */
+.ag-overlay-no-rows-wrapper {
+  padding: 32px !important;
+}
+
+.ag-overlay-no-rows-center {
+  color: var(--muted-foreground) !important;
+  font-size: 14px !important;
+  padding: 24px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* ============================================================================
+   MASTER DETAIL - Expandable rows with smooth transitions
+   ============================================================================ */
+
+/* Smooth height transitions for the grid container */
+.loupe-system {
+  transition: height 0.2s ease-out;
+}
+
+/* Detail row styling */
+.ag-details-row {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* Full width detail content */
+.ag-full-width-container {
+  width: 100%;
+}
+
+/* Detail cell wrapper - ensure full width */
+.ag-details-row .ag-details-grid-wrap {
+  width: 100%;
+  padding: 0 !important;
+}
+
+/* Row group expand icon - apply Material Symbols font */
+.ag-group-expanded .ag-icon,
+.ag-group-contracted .ag-icon,
+.ag-icon-tree-closed,
+.ag-icon-tree-open {
+  font-family: "Material Symbols Rounded" !important;
+  font-size: 20px !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.ag-icon-tree-closed::before {
+  content: "chevron_right" !important;
+}
+
+.ag-icon-tree-open::before {
+  content: "expand_more" !important;
+}
+
+/* ============================================================================
+   FILTER MENU POPUP - Match design system dropdown/command patterns
+   ============================================================================ */
+
+/* Filter popup container - match DropdownMenuContent: rounded-lg border bg-popover p-1 shadow-xs */
+.ag-popup {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+/* The main popup menu - solid background with border and shadow */
+.ag-popup .ag-menu,
+.ag-popup .ag-menu.ag-filter-menu,
+.ag-menu.ag-filter-menu.ag-popup-child {
+  background-color: var(--popover) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  overflow: visible !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  padding: 8px !important;
+  height: fit-content !important;
+  min-height: fit-content !important;
+  max-height: none !important;
+  z-index: 9999 !important;
+}
+
+/* Filter panel content */
+.ag-filter {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+  padding: 4px !important;
+}
+
+/* Filter input fields - match design system Input */
+.ag-filter-body-wrapper input,
+.ag-filter input[type="text"],
+.ag-filter input[type="number"],
+.ag-text-field-input {
+  background-color: var(--background) !important;
+  border: 1px solid var(--input) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  color: var(--foreground) !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  height: 36px !important;
+}
+
+.ag-filter-body-wrapper input:focus,
+.ag-filter input:focus,
+.ag-text-field-input:focus {
+  border-color: var(--ring) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 20%, transparent) !important;
+}
+
+/* Filter select dropdowns */
+.ag-filter-select,
+.ag-select .ag-picker-field-wrapper {
+  background-color: var(--background) !important;
+  border: 1px solid var(--input) !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  color: var(--foreground) !important;
+  height: 36px !important;
+}
+
+/* Filter buttons (Apply, Clear, Reset) - match design system Button */
+.ag-filter-apply-panel {
+  padding: 8px 4px 4px 4px !important;
+  border-top: 1px solid var(--border) !important;
+  margin-top: 8px !important;
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.ag-filter-apply-panel button {
+  background-color: var(--secondary) !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--secondary-foreground) !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+  height: 36px !important;
+}
+
+.ag-filter-apply-panel button:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--secondary) 80%,
+    var(--foreground)
+  ) !important;
+}
+
+/* Column menu items - match DropdownMenuItem: rounded-sm py-1.5 pl-2 pr-8 text-sm */
+.ag-menu-option {
+  padding: 6px 32px 6px 8px !important;
+  font-size: 14px !important;
+  color: var(--foreground) !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+  border-radius: 4px !important;
+  margin: 1px 0 !important;
+}
+
+.ag-menu-option:hover,
+.ag-menu-option:focus {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+.ag-menu-option-active {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+/* Menu option icons */
+.ag-menu-option-icon {
+  color: var(--muted-foreground) !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.ag-menu-option:hover .ag-menu-option-icon {
+  color: var(--accent-foreground) !important;
+}
+
+/* Menu separator - match DropdownMenuSeparator: -mx-1 my-1 h-px bg-muted */
+.ag-menu-separator {
+  height: 1px !important;
+  background-color: var(--muted) !important;
+  margin: 4px -4px !important;
+  border: none !important;
+}
+
+.ag-menu-separator-part::after {
+  display: none !important;
+}
+
+/* Filter condition labels */
+.ag-filter-condition {
+  color: var(--muted-foreground) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 4px 0 !important;
+}
+
+/* Fix: Hide search icon in filter input that overlays text */
+.ag-text-field-input-wrapper .ag-icon {
+  display: none !important;
+}
+
+/* Hide the search icon pseudo-element in filter input */
+.ag-text-field-input-wrapper::before {
+  display: none !important;
+}
+
+/* Fix: Filter select dropdown (contains, equals, etc.) - text-only styling */
+.ag-filter .ag-select,
+.ag-filter .ag-picker-field {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.ag-filter .ag-picker-field-wrapper {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 4px 0 !important;
+  min-height: auto !important;
+  cursor: pointer !important;
+  gap: 4px !important;
+}
+
+.ag-filter .ag-picker-field-wrapper:hover {
+  background-color: transparent !important;
+}
+
+.ag-filter .ag-picker-field-wrapper:hover .ag-picker-field-display {
+  text-decoration: underline !important;
+}
+
+/* Filter select display text */
+.ag-filter .ag-picker-field-display {
+  font-size: 14px !important;
+  color: var(--foreground) !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+}
+
+/* Filter select dropdown icon */
+.ag-filter .ag-picker-field-icon {
+  color: var(--muted-foreground) !important;
+}
+
+/* Filter dropdown list styling - match CommandList/DropdownMenuContent */
+.ag-select-list {
+  background-color: var(--popover) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  padding: 4px !important;
+}
+
+/* List items - match CommandItem/DropdownMenuItem: rounded-sm px-2 py-1.5 text-sm */
+.ag-select-list-item {
+  padding: 6px 8px !important;
+  font-size: 14px !important;
+  color: var(--foreground) !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  margin: 1px 0 !important;
+}
+
+.ag-select-list-item:hover {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+.ag-select-list-item.ag-active-item {
+  background-color: var(--accent) !important;
+  color: var(--accent-foreground) !important;
+}
+
+/* Filter wrapper - remove any nested button styling */
+.ag-filter-wrapper {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Filter body - proper spacing */
+.ag-filter-body {
+  padding: 4px 0 !important;
+}
+
+/* Simple filter - spacing between elements */
+.ag-simple-filter-body-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  padding: 0 !important;
+}
+
+/* ============================================================================
+   FIX: Hide popup positioning artifacts
+   ============================================================================ */
+
+/* Hide the popup anchor/positioning indicator */
+.ag-popup::before,
+.ag-popup::after {
+  display: none !important;
+}
+
+/* Hide any visual indicators from popup positioning */
+.ag-popup-positioning-virtual-parent {
+  display: none !important;
+}
+
+/* Ensure the filter wrapper doesn't add extra spacing */
+.ag-filter-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove any focus outlines on grid elements that might cause visual issues */
+.ag-row:focus,
+.ag-row:focus-within {
+  outline: none !important;
+}
+
+/* Ensure popup overlays content without being clipped */
+.ag-popup {
+  position: fixed !important;
+  z-index: 9999 !important;
+  overflow: visible !important;
+}
+
+/* ============================================================================
+   REFINED FILTER STYLING - Match design system dropdown patterns
+   ============================================================================ */
+
+/* Filter container - width to match design system */
+.ag-filter {
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+}
+
+/* Style the "Contains" dropdown as a boxy button - same width as filter input */
+.ag-filter .ag-select {
+  margin-bottom: 8px !important;
+  width: 100% !important;
+}
+
+.ag-filter .ag-picker-field-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 32px !important;
+  width: 100% !important;
+  background-color: var(--background) !important;
+  border: 1px solid var(--input) !important;
+  border-radius: 6px !important;
+  padding: 0 10px !important;
+  cursor: pointer !important;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.ag-filter .ag-picker-field-wrapper:hover {
+  background-color: var(--accent) !important;
+  border-color: var(--border) !important;
+}
+
+/* Contains text styling - match filter input font */
+.ag-filter .ag-picker-field-display {
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--foreground) !important;
+  text-decoration: none !important;
+}
+
+/* Dropdown arrow icon styling */
+.ag-filter .ag-picker-field-icon {
+  margin-left: auto !important;
+}
+
+.ag-filter .ag-picker-field-icon .ag-icon {
+  font-family: "Material Symbols Rounded" !important;
+  font-size: 16px !important;
+  color: var(--muted-foreground) !important;
+}
+
+.ag-filter .ag-icon-small-down::before {
+  content: "expand_more" !important;
+}
+
+/* Input field styling - same width and height as Contains */
+.ag-filter .ag-text-field-input {
+  padding: 6px 10px !important;
+  height: 32px !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: var(--foreground) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Filter input placeholder styling */
+.ag-filter .ag-text-field-input::placeholder {
+  font-family: var(--font-geist-sans), system-ui, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: var(--muted-foreground) !important;
+}
+
+/* Ensure input wrapper matches the width */
+.ag-filter .ag-input-field,
+.ag-filter .ag-text-field {
+  width: 100% !important;
+}
+
+.ag-filter .ag-input-wrapper {
+  width: 100% !important;
+}
+
+/* Filter body wrapper with compact padding */
+.ag-filter .ag-filter-body-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding: 8px !important;
+}
+
+/* Hide the second text input ("To" field) - only show first filter input */
+.ag-filter .ag-filter-body-wrapper > .ag-input-field:nth-child(2),
+.ag-filter .ag-filter-body-wrapper > .ag-text-field:nth-child(2),
+.ag-filter .ag-filter-body-wrapper .ag-filter-to {
+  display: none !important;
+}
+
+/* Add search icon to the filter input using background image */
+.ag-filter .ag-text-field-input[placeholder="Filter..."],
+.ag-filter .ag-text-field-input[placeholder="Filter"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: 10px center !important;
+  background-size: 16px 16px !important;
+  padding-left: 34px !important;
+}
+
+/* Focus style for filter input - blue ring like reference */
+.ag-filter .ag-text-field-input:focus {
+  outline: none !important;
+  border-color: hsl(var(--ring)) !important;
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2) !important;
+}
