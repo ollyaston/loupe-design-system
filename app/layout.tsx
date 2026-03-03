@@ -24,7 +24,8 @@ const dmSerifText = DM_Serif_Text({
 export const metadata: Metadata = {
   // eslint-disable-next-line agent-loupe-ui/sentence-case -- brand name
   title: "Loupe Design System",
-  description: "Onyx design system component library",
+  // eslint-disable-next-line agent-loupe-ui/sentence-case -- brand name
+  description: "Loupe Design System component library",
 };
 
 export default function RootLayout({

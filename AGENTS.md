@@ -76,7 +76,7 @@ This is a **Next.js 15 billing application** for AI agents using the App Router 
 
 - Next.js 15 with App Router and React 19
 - TailwindCSS for layout utilities
-- Custom Onyx design system in `@/design-system/` (see below)
+- Custom Loupe Design System in `@/design-system/` (see below)
 
 **State & Data:**
 
@@ -177,7 +177,7 @@ New components must go through design review before being added to the main desi
 7. Once approved by designers, move the story to its final location (e.g., `stories/cards/`, `stories/forms/`, etc.) and update the title (remove the 🚧 emoji)
 8. Update `stories/Welcome.mdx` to move the component from quarantine to its proper section
 
-This ensures all new components meet design standards before becoming part of the official Onyx design system.
+This ensures all new components meet design standards before becoming part of the official Loupe Design System.
 
 ### Key Patterns
 

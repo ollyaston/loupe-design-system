@@ -1,6 +1,6 @@
 # Loupe design system extraction – complete
 
-Extraction from the Paid/Onyx billing app to a standalone Loupe design system is **complete**.
+Extraction to a standalone Loupe Design System is **complete**.
 
 ---
 
@@ -21,7 +21,7 @@ Extraction from the Paid/Onyx billing app to a standalone Loupe design system is
 ### Phases 1–4 (previously completed)
 
 - Removed `app/`, most of `lib/`, `context/`, `hooks/`, `types/` (kept `types/events.ts`)
-- Rebranded Onyx → Loupe (`loupe-system` class, docs)
+- Uses Loupe branding (`loupe-system` class, docs)
 - Slimmed `public/`, ESLint config, GitHub workflows
 - Stubbed `feature-flags`, `ui-flags`; no-op hooks for ghost-completion, realtime-transcription
 

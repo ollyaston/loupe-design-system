@@ -162,7 +162,7 @@ All agent rules, AI assistants, linting, and code-quality tooling stay as part o
 | **Claude rules**     | `.claude/design-system.md`                | Claude guidance for design system patterns (mirrors .cursor rules)                                                                                                                                                                                                                                |
 | **Agent docs**       | `AGENTS.md`, `CLAUDE.md`                  | Architecture and dev commands for AI agents                                                                                                                                                                                                                                                       |
 | **Greptile**         | `greptile.json`                           | AI code review rules (design system usage, loupe-system class, no app state in components). Update: (1) rebrand to Loupe in `customContext.other`; (2) remove or adjust rules scoped to `app/**` (app/ is gone); keep `components/**` scope for remaining layout/KPI/skeleton components          |
-| **ESLint**           | `eslint.config.mjs`, `eslint-rules/*.mjs` | All rules: `loupe-system-class`, `no-app-state-in-design-system`, `ui-component-story-required`, `sentence-case`, `literal-color-classes`, `large-text-classes`. Rename `onyx-system-class` → `loupe-system-class`. Keep `page-wrapper-required` (becomes no-op once `app/` is gone) or remove it |
+| **ESLint**           | `eslint.config.mjs`, `eslint-rules/*.mjs` | All rules: `loupe-system-class`, `no-app-state-in-design-system`, `ui-component-story-required`, `sentence-case`, `literal-color-classes`, `large-text-classes`. `loupe-system-class`. Keep `page-wrapper-required` (becomes no-op once `app/` is gone) or remove it |
 | **Prettier**         | `package.json` scripts, `.prettierignore` | Formatting                                                                                                                                                                                                                                                                                        |
 | **Husky**            | `.husky/pre-push`                         | Runs `format:check` before push                                                                                                                                                                                                                                                                   |
 | **GitHub workflows** | `.github/workflows/`                      | Lint, format, build_storybook, (optional) deploy_storybook. See Part 1.5                                                                                                                                                                                                                          |
@@ -246,7 +246,7 @@ Replace all product-specific branding with Loupe. Files to update:
 | `design-system/icon.tsx`                | Comment about custom icons → Loupe                 |
 | `.storybook/main.ts`                    | Deployment URL comment → Loupe domain              |
 
-Also: CSS class `onyx-system` → `loupe-system` across all components. ESLint rule `onyx-system-class` → `loupe-system-class`.
+Also: CSS class `loupe-system` across all components. ESLint rule `loupe-system-class`.
 
 ### 3.3 Gem component
 
@@ -264,7 +264,7 @@ Keep the full ESLint setup and all custom rules:
 
 | Rule                                                   | Action                                                               |
 | ------------------------------------------------------ | -------------------------------------------------------------------- |
-| `loupe-system-class` (rename from `onyx-system-class`) | Keep – design system components must have root class                 |
+| `loupe-system-class` | Keep – design system components must have root class                 |
 | `no-app-state-in-design-system`                        | Keep – design-system boundary enforcement                            |
 | `ui-component-story-required`                          | Keep – every component needs a Storybook story                       |
 | `sentence-case`                                        | Keep – user-facing strings                                           |
@@ -338,8 +338,8 @@ loupe-design-system/
 3. **Phase 3 – Rebrand to Loupe**
    - Replace all product/platform branding with Loupe
    - Update README, Welcome.mdx, Storybook title to Loupe
-   - CSS class `onyx-system` → `loupe-system` in all design-system components
-   - ESLint: rename `eslint-rules/onyx-system-class.mjs` → `loupe-system-class.mjs`, update its string checks and messages, update `eslint.config.mjs` imports
+- CSS class `loupe-system` in all design-system components
+  - ESLint: `eslint-rules/loupe-system-class.mjs`, update `eslint.config.mjs` imports
    - ESLint: update `sentence-case.mjs` allowed exceptions (remove product-specific terms)
 
 4. **Phase 4 – Update developer tooling and GitHub**
