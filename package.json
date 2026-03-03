@@ -1,6 +1,6 @@
 {
   "name": "@ollyaston/loupe-design-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Loupe Design System – React components built on shadcn/ui and Radix UI",
   "repository": {
     "type": "git",
