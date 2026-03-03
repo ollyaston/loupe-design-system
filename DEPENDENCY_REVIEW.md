@@ -12,7 +12,7 @@ Review of dependencies for the Loupe design system. Based on grep of `design-sys
 | `@intercom/messenger-js-sdk`    | Intercom – app only                                                                |
 | Billing blocks package          | Not imported. **Caveat:** brings in Stripe as dep; removing it also removes Stripe |
 | Billing API package             | Not imported                                                                       |
-| `@stripe/react-stripe-js`       | Not imported directly (came via billing blocks)                                     |
+| `@stripe/react-stripe-js`       | Not imported directly (came via billing blocks)                                    |
 | `@stripe/stripe-js`             | Not imported directly                                                              |
 | `@tanstack/react-query`         | Not imported – app data fetching                                                   |
 | `@useparagon/connect`           | Paragon – app integrations                                                         |

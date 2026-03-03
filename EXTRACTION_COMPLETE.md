@@ -6,13 +6,13 @@ Extraction to a standalone Loupe Design System is **complete**.
 
 ## Validation checklist ✓
 
-| Check                                                                             | Status                  |
-| --------------------------------------------------------------------------------- | ----------------------- |
-| `npm run build-storybook`                                                         | ✓ Passes                |
-| `npm run lint`                                                                    | ✓ 0 errors (9 warnings) |
-| `npm run format`                                                                  | ✓ Passes                |
-| No `process.env` for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, product API keys | ✓ None found        |
-| No product domain URLs in source                                                    | ✓ None found        |
+| Check                                                                                 | Status                  |
+| ------------------------------------------------------------------------------------- | ----------------------- |
+| `npm run build-storybook`                                                             | ✓ Passes                |
+| `npm run lint`                                                                        | ✓ 0 errors (9 warnings) |
+| `npm run format`                                                                      | ✓ Passes                |
+| No `process.env` for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, product API keys | ✓ None found            |
+| No product domain URLs in source                                                      | ✓ None found            |
 
 ---
 

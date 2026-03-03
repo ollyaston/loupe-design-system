@@ -137,12 +137,12 @@ Remove all others:
 
 Storybook uses `staticDirs: ["../public"]`. Slim `public/`:
 
-| Remove                                                                                             | Reason                                               |
-| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `terms.html`, `privacy.html`                                                                       | App legal pages                                      |
-| Product logo SVGs in `illustrations/`                                                            | Design system Logo is self-contained                 |
-| `connect_stripe.svg`, `slack.svg`, `datadog.svg`, `salesforce.svg`, `clickhouse.svg`, `sql-db.svg` | App integration assets                               |
-| `ai_sparkles.svg`, `arrow_up_right_transparent.svg`                                                | App-specific if not used in stories                  |
+| Remove                                                                                             | Reason                               |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `terms.html`, `privacy.html`                                                                       | App legal pages                      |
+| Product logo SVGs in `illustrations/`                                                              | Design system Logo is self-contained |
+| `connect_stripe.svg`, `slack.svg`, `datadog.svg`, `salesforce.svg`, `clickhouse.svg`, `sql-db.svg` | App integration assets               |
+| `ai_sparkles.svg`, `arrow_up_right_transparent.svg`                                                | App-specific if not used in stories  |
 
 **Keep** (if referenced by design-system or stories): `next.svg`, `illustrations/waving_hand.svg`, or any generic asset actually imported. Audit with grep before deleting.
 
@@ -156,16 +156,16 @@ Storybook uses `staticDirs: ["../public"]`. Slim `public/`:
 
 All agent rules, AI assistants, linting, and code-quality tooling stay as part of the design system:
 
-| Item                 | Location                                  | Purpose                                                                                                                                                                                                                                                                                           |
-| -------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent rules**      | `.cursor/rules/design-system.md`          | Cursor rules for design system usage and component creation. Stories use `Container` from `@/components/layouts/container` – keep this                                                                                                                                                            |
-| **Claude rules**     | `.claude/design-system.md`                | Claude guidance for design system patterns (mirrors .cursor rules)                                                                                                                                                                                                                                |
-| **Agent docs**       | `AGENTS.md`, `CLAUDE.md`                  | Architecture and dev commands for AI agents                                                                                                                                                                                                                                                       |
-| **Greptile**         | `greptile.json`                           | AI code review rules (design system usage, loupe-system class, no app state in components). Update: (1) rebrand to Loupe in `customContext.other`; (2) remove or adjust rules scoped to `app/**` (app/ is gone); keep `components/**` scope for remaining layout/KPI/skeleton components          |
-| **ESLint**           | `eslint.config.mjs`, `eslint-rules/*.mjs` | All rules: `loupe-system-class`, `no-app-state-in-design-system`, `ui-component-story-required`, `sentence-case`, `literal-color-classes`, `large-text-classes`. `loupe-system-class`. Keep `page-wrapper-required` (becomes no-op once `app/` is gone) or remove it |
-| **Prettier**         | `package.json` scripts, `.prettierignore` | Formatting                                                                                                                                                                                                                                                                                        |
-| **Husky**            | `.husky/pre-push`                         | Runs `format:check` before push                                                                                                                                                                                                                                                                   |
-| **GitHub workflows** | `.github/workflows/`                      | Lint, format, build_storybook, (optional) deploy_storybook. See Part 1.5                                                                                                                                                                                                                          |
+| Item                 | Location                                  | Purpose                                                                                                                                                                                                                                                                                  |
+| -------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Agent rules**      | `.cursor/rules/design-system.md`          | Cursor rules for design system usage and component creation. Stories use `Container` from `@/components/layouts/container` – keep this                                                                                                                                                   |
+| **Claude rules**     | `.claude/design-system.md`                | Claude guidance for design system patterns (mirrors .cursor rules)                                                                                                                                                                                                                       |
+| **Agent docs**       | `AGENTS.md`, `CLAUDE.md`                  | Architecture and dev commands for AI agents                                                                                                                                                                                                                                              |
+| **Greptile**         | `greptile.json`                           | AI code review rules (design system usage, loupe-system class, no app state in components). Update: (1) rebrand to Loupe in `customContext.other`; (2) remove or adjust rules scoped to `app/**` (app/ is gone); keep `components/**` scope for remaining layout/KPI/skeleton components |
+| **ESLint**           | `eslint.config.mjs`, `eslint-rules/*.mjs` | All rules: `loupe-system-class`, `no-app-state-in-design-system`, `ui-component-story-required`, `sentence-case`, `literal-color-classes`, `large-text-classes`. `loupe-system-class`. Keep `page-wrapper-required` (becomes no-op once `app/` is gone) or remove it                     |
+| **Prettier**         | `package.json` scripts, `.prettierignore` | Formatting                                                                                                                                                                                                                                                                               |
+| **Husky**            | `.husky/pre-push`                         | Runs `format:check` before push                                                                                                                                                                                                                                                          |
+| **GitHub workflows** | `.github/workflows/`                      | Lint, format, build_storybook, (optional) deploy_storybook. See Part 1.5                                                                                                                                                                                                                 |
 
 These ensure the design system stays consistent and AI/LLM tooling continues to enforce patterns.
 
@@ -262,15 +262,15 @@ Also: CSS class `loupe-system` across all components. ESLint rule `loupe-system-
 
 Keep the full ESLint setup and all custom rules:
 
-| Rule                                                   | Action                                                               |
-| ------------------------------------------------------ | -------------------------------------------------------------------- |
-| `loupe-system-class` | Keep – design system components must have root class                 |
-| `no-app-state-in-design-system`                        | Keep – design-system boundary enforcement                            |
-| `ui-component-story-required`                          | Keep – every component needs a Storybook story                       |
-| `sentence-case`                                        | Keep – user-facing strings                                           |
-| `literal-color-classes`                                | Keep – semantic colors only                                          |
-| `large-text-classes`                                   | Keep                                                                 |
-| `page-wrapper-required`                                | Keep (becomes no-op – no `app/` pages to lint) or remove for clarity |
+| Rule                            | Action                                                               |
+| ------------------------------- | -------------------------------------------------------------------- |
+| `loupe-system-class`            | Keep – design system components must have root class                 |
+| `no-app-state-in-design-system` | Keep – design-system boundary enforcement                            |
+| `ui-component-story-required`   | Keep – every component needs a Storybook story                       |
+| `sentence-case`                 | Keep – user-facing strings                                           |
+| `literal-color-classes`         | Keep – semantic colors only                                          |
+| `large-text-classes`            | Keep                                                                 |
+| `page-wrapper-required`         | Keep (becomes no-op – no `app/` pages to lint) or remove for clarity |
 
 The `page-wrapper-required` rule only applies to `app/**/page.tsx`; with `app/` removed, it matches nothing. You can leave it (harmless) or remove it to avoid confusion.
 
@@ -338,9 +338,10 @@ loupe-design-system/
 3. **Phase 3 – Rebrand to Loupe**
    - Replace all product/platform branding with Loupe
    - Update README, Welcome.mdx, Storybook title to Loupe
+
 - CSS class `loupe-system` in all design-system components
   - ESLint: `eslint-rules/loupe-system-class.mjs`, update `eslint.config.mjs` imports
-   - ESLint: update `sentence-case.mjs` allowed exceptions (remove product-specific terms)
+  - ESLint: update `sentence-case.mjs` allowed exceptions (remove product-specific terms)
 
 4. **Phase 4 – Update developer tooling and GitHub**
    - `greptile.json`: Rebrand to Loupe in `customContext.other`
@@ -355,6 +356,7 @@ loupe-design-system/
    - `npm run lint`
    - `npm run format`
    - `npm run format:check` (via husky pre-push)
+
 - Grep for product domain URLs – zero matches
   - No `process.env` reads for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, product API keys, Brandfetch
 
@@ -387,14 +389,14 @@ The extracted design system must feel like a **fresh repo** with no third-party 
 
 **Replace `.env.example`** with a design-system-only template. Remove all app/product vars:
 
-| Remove                           | Reason              |
-| -------------------------------- | ------------------- |
-| `AUTH0_*`                        | Auth removed        |
-| `NEXT_PUBLIC_POSTHOG_*`          | PostHog removed     |
-| `NEXT_PUBLIC_API_BASE`           | No app API          |
-| `INTERCOM_SECRET_KEY`            | Intercom removed    |
-| Product API keys                 | Removed             |
-| `NEXT_PUBLIC_BRANDFETCH_API_KEY` | Brandfetch removed  |
+| Remove                           | Reason             |
+| -------------------------------- | ------------------ |
+| `AUTH0_*`                        | Auth removed       |
+| `NEXT_PUBLIC_POSTHOG_*`          | PostHog removed    |
+| `NEXT_PUBLIC_API_BASE`           | No app API         |
+| `INTERCOM_SECRET_KEY`            | Intercom removed   |
+| Product API keys                 | Removed            |
+| `NEXT_PUBLIC_BRANDFETCH_API_KEY` | Brandfetch removed |
 
 **Optional vars only** (user supplies their own if needed). See **Part 9.8** for the full API keys reference and `ENV.md` template.
 
