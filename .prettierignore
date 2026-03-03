@@ -7,6 +7,7 @@ public/privacy.html
 out
 build
 dist
+storybook-static
 
 # Dependencies
 node_modules
