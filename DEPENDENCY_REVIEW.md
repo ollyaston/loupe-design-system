@@ -10,9 +10,9 @@ Review of dependencies for the Loupe design system. Based on grep of `design-sys
 | ------------------------------- | ---------------------------------------------------------------------------------- |
 | `@auth0/nextjs-auth0`           | Auth – app only                                                                    |
 | `@intercom/messenger-js-sdk`    | Intercom – app only                                                                |
-| `@paid-ai/paid-blocks`          | Not imported. **Caveat:** brings in Stripe as dep; removing it also removes Stripe |
-| `@paid-ai/paid-node`            | Not imported – billing API                                                         |
-| `@stripe/react-stripe-js`       | Not imported directly (came via paid-blocks)                                       |
+| Billing blocks package          | Not imported. **Caveat:** brings in Stripe as dep; removing it also removes Stripe |
+| Billing API package             | Not imported                                                                       |
+| `@stripe/react-stripe-js`       | Not imported directly (came via billing blocks)                                     |
 | `@stripe/stripe-js`             | Not imported directly                                                              |
 | `@tanstack/react-query`         | Not imported – app data fetching                                                   |
 | `@useparagon/connect`           | Paragon – app integrations                                                         |
@@ -60,7 +60,7 @@ Review of dependencies for the Loupe design system. Based on grep of `design-sys
 
 1. `@auth0/nextjs-auth0`
 2. `@intercom/messenger-js-sdk`
-3. `@paid-ai/paid-node`
+3. Billing API package
 4. `@useparagon/connect`
 5. `launchdarkly-react-client-sdk`
 6. `posthog-js`
@@ -68,9 +68,9 @@ Review of dependencies for the Loupe design system. Based on grep of `design-sys
 8. `react-map-gl`
 9. `@tanstack/react-query`
 
-**Phase 2 – paid-blocks + Stripe (remove together):**
+**Phase 2 – billing blocks + Stripe (remove together):**
 
-10. `@paid-ai/paid-blocks`
+10. Billing blocks package
 11. `@stripe/react-stripe-js`
 12. `@stripe/stripe-js`
 
@@ -84,7 +84,7 @@ Review of dependencies for the Loupe design system. Based on grep of `design-sys
 
 ## Transitive dependencies
 
-- Removing `@paid-ai/paid-blocks` will drop Stripe (it's a direct dep of paid-blocks).
+- Removing the billing blocks package will drop Stripe (it's a direct dependency).
 - `@knocklabs/react` is top-level; no package in our tree depends on it, so it can be removed if we don't use it.
 - `axios` is used by `@knocklabs/client`; if we remove `@knocklabs/react`, axios may become removable depending on other deps.
 

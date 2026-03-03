@@ -132,7 +132,7 @@ All components are documented in Storybook.
 
 - Storybook stories live in `/stories/`
 - Each component should have a story for each variant and state
-- Browse components in Storybook at `http://paid.design/`
+- Browse components in Storybook at [ollyaston.github.io/loupe-design-system](https://ollyaston.github.io/loupe-design-system/)
 
 **Adding components:**
 

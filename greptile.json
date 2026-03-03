@@ -43,7 +43,7 @@
     "other": [
       {
         "scope": ["app/**/*.tsx", "components/**/*.tsx"],
-        "content": "This codebase uses the Paid Loupe design system. Components are based on shadcn/ui with custom modifications. All UI components should be imported from @/design-system/ using the pattern: import { ComponentName } from '@/design-system/component-name'. Available component categories include: Primitives (Button, Input, Card, Dialog, etc.), Forms (Checkbox, Select, Switch, etc.), Charts, Tables, Layouts, Modals & Popups, and more. See stories/Welcome.mdx for the complete list."
+        "content": "This codebase uses the Loupe design system. Components are based on shadcn/ui with custom modifications. All UI components should be imported from @/design-system/ using the pattern: import { ComponentName } from '@/design-system/component-name'. Available component categories include: Primitives (Button, Input, Card, Dialog, etc.), Forms (Checkbox, Select, Switch, etc.), Charts, Tables, Layouts, Modals & Popups, and more. See stories/Welcome.mdx for the complete list."
       },
       {
         "scope": ["design-system/**/*.tsx"],

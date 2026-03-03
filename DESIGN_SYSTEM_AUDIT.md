@@ -16,9 +16,9 @@ Full audit of what to keep vs remove to strip application code and retain only t
 
 The project is a Next.js 15 billing app with a design system embedded in `design-system/` and `stories/`. To keep only the design system and rebrand as Loupe:
 
-1. **Remove**: All of `app/`, most of `lib/`, `context/`, most of `types/`, most of `hooks/` (except design-system–related ones), middleware, API/auth, CI/CD for app deployment, and all API keys / paid-service integrations
+1. **Remove**: All of `app/`, most of `lib/`, `context/`, most of `types/`, most of `hooks/` (except design-system–related ones), middleware, API/auth, CI/CD for app deployment, and all API keys / third-party service integrations
 2. **Keep**: `design-system/`, `stories/`, `components/` (slimmed), Storybook config, styles, Tailwind/PostCSS, dev tooling, Puppeteer, AG Grid, Chromatic, D3, Highcharts, Recharts – all design-system tooling
-3. **Fix**: Design system components that import app-specific code; ensure a **clean build** with no third-party API keys or paid service credentials
+3. **Fix**: Design system components that import app-specific code; ensure a **clean build** with no third-party API keys or service credentials
 
 ---
 
@@ -73,7 +73,7 @@ Keep only: `lib/utils.ts` (cn + minimal helpers), `lib/currency.ts`, `lib/countr
 Remove all others:
 
 - `api-client.ts`, `api-access-token-cache.ts`, `constants.ts`
-- `auth-utils.ts`, `brandfetch-client.ts`, `paid-for-paid/`
+- `auth-utils.ts`, `brandfetch-client.ts`, product API client
 - `customer-utils.ts`, `research-utils.ts`, `order-utils.tsx`, `product-utils.ts`
 - `pricing-utils.ts`, `pricing-display-utils.ts`, `pricing-override-utils.ts`
 - `posthog.ts`, `posthog-opt-out.ts`
@@ -97,11 +97,11 @@ Remove all others:
 - `playwright` – browser tests
 - `@tanstack/react-table` – used by data-table
 
-**REMOVE** (require API keys, paid services, or app backends):
+**REMOVE** (require API keys, third-party services, or app backends):
 
 - `@auth0/nextjs-auth0`
 - `@intercom/messenger-js-sdk`, `@knocklabs/react`
-- `@paid-ai/paid-blocks`, `@paid-ai/paid-node`
+- Billing packages (Stripe blocks, billing API)
 - `@stripe/react-stripe-js`, `@stripe/stripe-js`
 - `@tanstack/react-query`
 - `@useparagon/connect`
@@ -140,7 +140,7 @@ Storybook uses `staticDirs: ["../public"]`. Slim `public/`:
 | Remove                                                                                             | Reason                                               |
 | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | `terms.html`, `privacy.html`                                                                       | App legal pages                                      |
-| `illustrations/Paid_Logo_*.svg`, `illustrations/AA_Logo.svg`                                       | Product logos – design system Logo is self-contained |
+| Product logo SVGs in `illustrations/`                                                            | Design system Logo is self-contained                 |
 | `connect_stripe.svg`, `slack.svg`, `datadog.svg`, `salesforce.svg`, `clickhouse.svg`, `sql-db.svg` | App integration assets                               |
 | `ai_sparkles.svg`, `arrow_up_right_transparent.svg`                                                | App-specific if not used in stories                  |
 
@@ -355,8 +355,8 @@ loupe-design-system/
    - `npm run lint`
    - `npm run format`
    - `npm run format:check` (via husky pre-push)
-   - Grep for `paid.ai`, `api.paid`, `auth.paid` – zero matches
-   - No `process.env` reads for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, PAID_API_KEY, Brandfetch
+- Grep for product domain URLs – zero matches
+  - No `process.env` reads for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, product API keys, Brandfetch
 
 ---
 
@@ -379,9 +379,9 @@ Recommendation: Move clearly product-specific components (UsageTablePreview, Gri
 
 ---
 
-## Part 9: Clean build – no API keys, no paid services
+## Part 9: Clean build – no API keys, no third-party services
 
-The extracted design system must feel like a **fresh repo** with no third-party credentials or paid service ties.
+The extracted design system must feel like a **fresh repo** with no third-party credentials or service ties.
 
 ### 9.1 Environment variables – clean slate
 
@@ -393,7 +393,7 @@ The extracted design system must feel like a **fresh repo** with no third-party 
 | `NEXT_PUBLIC_POSTHOG_*`          | PostHog removed     |
 | `NEXT_PUBLIC_API_BASE`           | No app API          |
 | `INTERCOM_SECRET_KEY`            | Intercom removed    |
-| `PAID_API_KEY`                   | Product API removed |
+| Product API keys                 | Removed             |
 | `NEXT_PUBLIC_BRANDFETCH_API_KEY` | Brandfetch removed  |
 
 **Optional vars only** (user supplies their own if needed). See **Part 9.8** for the full API keys reference and `ENV.md` template.
@@ -406,24 +406,21 @@ NEXT_PUBLIC_AG_GRID_LICENSE_KEY=
 CHROMATIC_PROJECT_TOKEN=
 ```
 
-### 9.2 Lib files to remove (API keys, paid services)
+### 9.2 Lib files to remove (API keys, third-party services)
 
-Ensure these are gone – they pull credentials or call paid APIs:
+Ensure these are gone – they pull credentials or call external APIs:
 
 - `lib/api-client.ts` – `API_BASE`, Bearer tokens
 - `lib/api-access-token-cache.ts` – JWT, PostHog
 - `lib/auth-utils.ts` – Auth0 config
 - `lib/posthog.ts`, `lib/posthog-opt-out.ts` – PostHog key
 - `lib/brandfetch-client.ts` – Brandfetch API key
-- `lib/paid-for-paid/client.ts` – `PAID_API_KEY`
+- Product API client – product API keys
 - `lib/constants.ts` – `API_BASE` from env
 
 ### 9.3 No hardcoded product URLs
 
-Search and remove/replace:
-
-- `auth.paid.ai`, `api.paid.ai`, `app.paid.ai`, `docs.paid.ai`, `paid.design`
-- Any `https://*.paid.ai` or similar
+Search and remove/replace any hardcoded product or app URLs.
 
 ### 9.4 AG Grid
 
@@ -435,7 +432,7 @@ Search and remove/replace:
 
 - `@chromatic-com/storybook` addon can stay; it works without a token for local Storybook.
 - For Chromatic cloud, user sets `CHROMATIC_PROJECT_TOKEN` in CI.
-- Do not commit any Chromatic project token or Paid project ID.
+- Do not commit any Chromatic project token or product project IDs.
 
 ### 9.6 Git hygiene
 
@@ -449,8 +446,8 @@ After extraction, confirm:
 1. `npm install` succeeds with no missing peer deps for removed packages.
 2. `npm run storybook` runs with no env vars (or only optional AG Grid key).
 3. `npm run build-storybook` completes.
-4. No `process.env` reads for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, PAID_API_KEY, Brandfetch.
-5. Grep for `paid.ai`, `api.paid`, `auth.paid` – should return no matches.
+4. No `process.env` reads for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, product API keys, Brandfetch.
+5. Grep for product domain URLs – should return no matches.
 
 ### 9.8 API keys and environment variables reference
 

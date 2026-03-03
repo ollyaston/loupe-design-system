@@ -1,5 +1,5 @@
 ---
-description: Instructions for using the Paid design system.
+description: Instructions for using the Loupe design system.
 globs:
 alwaysApply: true
 ---

@@ -11,8 +11,8 @@ Extraction to a standalone Loupe Design System is **complete**.
 | `npm run build-storybook`                                                         | ✓ Passes                |
 | `npm run lint`                                                                    | ✓ 0 errors (9 warnings) |
 | `npm run format`                                                                  | ✓ Passes                |
-| No `process.env` for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, PAID_API_KEY | ✓ None found            |
-| No `paid.ai`, `api.paid`, `auth.paid` in source                                   | ✓ None found            |
+| No `process.env` for Auth0, PostHog, LaunchDarkly, Stripe, Intercom, product API keys | ✓ None found        |
+| No product domain URLs in source                                                    | ✓ None found        |
 
 ---
 
@@ -28,7 +28,7 @@ Extraction to a standalone Loupe Design System is **complete**.
 ### Phase 5 – Dependencies removed
 
 - **Auth & integrations:** `@auth0/nextjs-auth0`, `@intercom/messenger-js-sdk`, `@useparagon/connect`
-- **Paid/Billing:** `@paid-ai/paid-blocks`, `@paid-ai/paid-node`, `@stripe/react-stripe-js`, `@stripe/stripe-js`
+- **Billing:** Stripe and billing API packages
 - **Analytics & feature flags:** `launchdarkly-react-client-sdk`, `posthog-js`
 - **Maps:** `mapbox-gl`, `react-map-gl`
 - **Data fetching:** `@tanstack/react-query`
